@@ -2,11 +2,8 @@
   <div class="shoping">
     <div class="card">
       <div class="select-box">
-        <div class="radio">
-          <div
-            v-bind:class="shopping.isSelect? 'noSelect isSelect': 'noSelect'"
-            v-on:click="$emit('toggle-select')"
-          ></div>
+        <div class="radio" v-on:click="$emit('toggle-select')">
+          <div v-bind:class="shopping.isSelect? 'noSelect isSelect': 'noSelect'"></div>
         </div>
       </div>
       <div class="img-box"></div>

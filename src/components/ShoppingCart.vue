@@ -2,15 +2,14 @@
   <div class="shopping-box">
     <div class="edit-box">
       <span class="select-all">
-        <div class="radio" id="selectAll">
-          <div class="isSelect"></div>
+        <div class="radio" v-on:click="toggleSelectAll(isSelectAll)">
+          <div v-bind:class="isSelectAll? 'noSelect isSelect':'noSelect'"></div>
         </div>
         <span class="text">全选</span>
       </span>
       <span class="edit">编辑</span>
     </div>
     <div class="shopping-card-box">
-      <!-- <Shopping info="{{" shoppingInfo.101 }} /> -->
       <Shopping
         v-for="shopping in shoppings"
         v-bind:key="shopping.id"
@@ -84,10 +83,23 @@ export default {
     decrease: function(count) {
       if (count > 1) {
         count = count - 1;
-        console.log("============", count);
       }
-      console.log("============", count);
       return count;
+    },
+    toggleSelectAll: function(isSelectAll) {
+      if (!isSelectAll) {
+        for (const shopping of this.shoppings) {
+          console.log(shopping);
+          shopping.isSelect = true;
+        }
+        this.isSelectAll = true;
+      } else {
+        for (const shopping of this.shoppings) {
+          console.log(shopping);
+          shopping.isSelect = false;
+        }
+        this.isSelectAll = false;
+      }
     }
   },
   components: {
@@ -127,11 +139,15 @@ $m6: #ffffff;
         border-radius: 50%;
         border: 0.0625rem solid $m3;
         cursor: pointer;
-        .isSelect {
+        .noSelect {
           width: 0.75rem;
           height: 0.75rem;
-          background-color: $m3;
+          background-color: $m4;
           border-radius: 50%;
+        }
+
+        .isSelect {
+          background-color: $m2;
         }
       }
       .text {
