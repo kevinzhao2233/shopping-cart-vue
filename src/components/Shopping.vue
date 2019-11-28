@@ -3,7 +3,7 @@
     <div class="card">
       <div class="select-box">
         <div class="radio">
-          <div 
+          <div
             v-bind:class="shopping.isSelect? 'noSelect isSelect': 'noSelect'"
             v-on:click="$emit('toggle-select')"
           ></div>
@@ -20,9 +20,8 @@
           <div class="count-box">
             <div v-on:click="$emit('decrease-count')" class="decrease"></div>
             <div class="count">
-              <input v-bind:value="shopping.count" type="text" />
+              <input v-model.number:value="shopping.count" type="number" />
             </div>
-            <!-- <input type="text" value="1" class="count"/> -->
             <div v-on:click="$emit('increase-count')" class="increase"></div>
           </div>
         </div>

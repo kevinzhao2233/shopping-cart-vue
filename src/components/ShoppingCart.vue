@@ -15,7 +15,7 @@
         v-for="shopping in shoppings"
         v-bind:key="shopping.id"
         v-bind:shopping="shopping"
-        v-on:decrease-count="shopping.count -= 1"
+        v-on:decrease-count="shopping.count = decrease(shopping.count)"
         v-on:increase-count="shopping.count += 1"
         v-on:toggle-select="shopping.isSelect = !shopping.isSelect"
       ></Shopping>
@@ -65,7 +65,8 @@ export default {
           isSelect: true
         }
       ],
-      totalPrice: 0
+      totalPrice: 0,
+      isSelectAll: false
     };
   },
   methods: {
@@ -79,6 +80,14 @@ export default {
       }
       this.totalPrice = tempPrice;
       return this.totalPrice;
+    },
+    decrease: function(count) {
+      if (count > 1) {
+        count = count - 1;
+        console.log("============", count);
+      }
+      console.log("============", count);
+      return count;
     }
   },
   components: {
