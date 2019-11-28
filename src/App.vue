@@ -20,11 +20,8 @@ export default {
 
 <style>
 #app {
-  margin: 2rem auto;
-  width: 30rem;
-  height: 56rem;
-  border: 0.25rem solid #f1f2f6;
-  border-radius: 2rem;
+  width: 100vw;
+  height: 100%;
   overflow: hidden;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

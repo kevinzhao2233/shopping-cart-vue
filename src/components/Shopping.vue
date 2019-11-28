@@ -2,25 +2,28 @@
   <div class="shoping">
     <div class="card">
       <div class="select-box">
-        <div class="radio" id="selectAll">
-          <div class="isSelect"></div>
+        <div class="radio">
+          <div 
+            v-bind:class="shopping.isSelect? 'noSelect isSelect': 'noSelect'"
+            v-on:click="$emit('toggle-select')"
+          ></div>
         </div>
       </div>
       <div class="img-box"></div>
       <div class="info-box">
         <div class="tit-box">
-          <h3>2019新款某某衣服 某某颜色 时尚 潮流 有饭</h3>
+          <h3>{{ shopping.title }}</h3>
         </div>
-        <span class="specify">某某号 某色 XXL号</span>
+        <span class="specify">{{ shopping.specify }}</span>
         <div class="bottom-box">
-          <span class="price">￥599.9</span>
+          <span class="price">￥{{ shopping.price }}</span>
           <div class="count-box">
-            <div class="decrease"></div>
+            <div v-on:click="$emit('decrease-count')" class="decrease"></div>
             <div class="count">
-              <input value="1" type="text" />
+              <input v-bind:value="shopping.count" type="text" />
             </div>
             <!-- <input type="text" value="1" class="count"/> -->
-            <div class="increase"></div>
+            <div v-on:click="$emit('increase-count')" class="increase"></div>
           </div>
         </div>
       </div>
@@ -31,10 +34,14 @@
 <script>
 export default {
   name: "Shopping",
+  props: {
+    shopping: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
-    return {
-      msg: ""
-    };
+    return {};
   }
 };
 </script>
@@ -53,28 +60,30 @@ $m6: #ffffff;
   width: 100%;
   min-height: 8.75rem;
   overflow: hidden;
-  border-bottom: .0625rem solid $m4;
+  border-bottom: 0.0625rem solid $m4;
 
   .select-box {
     display: flex;
     align-items: center;
-    width: 1rem;
+    width: 1.25rem;
     height: 8rem;
     .radio {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 1rem;
-      height: 1rem;
+      width: 1.25rem;
+      height: 1.25rem;
       border-radius: 50%;
       border: 0.0625rem solid $m3;
       cursor: pointer;
-
-      .isSelect {
-        width: 0.625rem;
-        height: 0.625rem;
-        background-color: $m3;
+      .noSelect {
+        width: 0.75rem;
+        height: 0.75rem;
+        background-color: $m4;
         border-radius: 50%;
+      }
+      .isSelect {
+        background-color: $m2;
       }
     }
   }
@@ -88,6 +97,7 @@ $m6: #ffffff;
   }
 
   .info-box {
+    flex: 1;
     margin: 0.75rem 0 0.75rem 0.5rem;
 
     .tit-box {
