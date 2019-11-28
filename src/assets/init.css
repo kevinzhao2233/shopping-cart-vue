@@ -1,0 +1,34 @@
+body,
+div,
+span,
+p,
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+button,
+input,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+a {
+  text-emphasis: none;
+}
+
+input {
+  outline: none;
+}
+
+input:active {
+  outline: none;
+}
