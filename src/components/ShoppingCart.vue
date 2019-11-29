@@ -15,14 +15,14 @@
         v-bind:key="shopping.id"
         v-bind:shopping="shopping"
         v-on:decrease-count="shopping.count = decrease(shopping.count)"
-        v-on:increase-count="shopping.count += 1"
+        v-on:increase-count="shopping.count = increase(shopping.count)"
         v-on:toggle-select="shopping.isSelect = !shopping.isSelect"
       ></Shopping>
     </div>
     <div class="footer">
       <div class="total-box">
         <span class="total">合计</span>
-        <span class="price">{{ calcPrice() }}</span>
+        <span class="price">{{ calcTotalPrice() }}</span>
       </div>
       <div class="submit">结算</div>
     </div>
@@ -69,22 +69,29 @@ export default {
     };
   },
   methods: {
-    calcPrice: function() {
+    calcTotalPrice: function() {
       let tempPrice = 0;
-      for (const index in this.shoppings) {
-        if (this.shoppings[index].isSelect) {
-          tempPrice +=
-            this.shoppings[index].price * this.shoppings[index].count;
+      for (const shopping of this.shoppings) {
+        if (shopping.isSelect) {
+          tempPrice += parseInt(shopping.price) * parseInt(shopping.count);
         }
       }
       this.totalPrice = tempPrice;
       return this.totalPrice;
     },
+
     decrease: function(count) {
       if (count > 1) {
         count = count - 1;
       }
       return count;
+    },
+
+    increase: function(count) {
+      if(count === ""){
+        count = 0;
+      }
+      return parseInt(count) + 1;
     },
     toggleSelectAll: function(isSelectAll) {
       if (!isSelectAll) {
