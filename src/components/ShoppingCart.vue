@@ -3,7 +3,7 @@
     <div class="edit-box">
       <span class="select-all">
         <div class="radio" v-on:click="toggleSelectAll(isSelectAll)">
-          <div v-bind:class="isSelectAll? 'noSelect isSelect':'noSelect'"></div>
+          <div v-bind:class="isSelectAll ? 'noSelect isSelect' : 'noSelect'"></div>
         </div>
         <span class="text">全选</span>
       </span>
@@ -30,35 +30,35 @@
 </template>
 
 <script>
-import Shopping from "./Shopping";
+import Shopping from './Shopping'
 export default {
-  name: "ShoppingCart",
-  data() {
+  name: 'ShoppingCart',
+  data () {
     return {
       shoppings: [
         {
           id: 101,
-          title: "A衣服，正品WOOG黑色棒球领男士羽绒服冬季加厚短款羽绒衣潮流",
-          img: "",
-          specify: "黑色 XXL",
+          title: 'A衣服，正品WOOG黑色棒球领男士羽绒服冬季加厚短款羽绒衣潮流',
+          img: '',
+          specify: '黑色 XXL',
           price: 788,
           count: 1,
           isSelect: false
         },
         {
           id: 102,
-          title: "B衣服，GXG男装2019年冬新款复古毛衣男宽松袖针织衫毛衣羊毛衫",
-          img: "",
-          specify: "白色 XXXL",
+          title: 'B衣服，GXG男装2019年冬新款复古毛衣男宽松袖针织衫毛衣羊毛衫',
+          img: '',
+          specify: '白色 XXXL',
           price: 799,
           count: 1,
           isSelect: true
         },
         {
           id: 103,
-          title: "C衣服，GXG男装2019冬季新款韩版宽松大口袋束腿裤潮牌休闲长裤",
-          img: "",
-          specify: "黑色 XXXL",
+          title: 'C衣服，GXG男装2019冬季新款韩版宽松大口袋束腿裤潮牌休闲长裤',
+          img: '',
+          specify: '黑色 XXXL',
           price: 599,
           count: 2,
           isSelect: true
@@ -66,53 +66,53 @@ export default {
       ],
       totalPrice: 0,
       isSelectAll: false
-    };
+    }
   },
   methods: {
-    calcTotalPrice: function() {
-      let tempPrice = 0;
+    calcTotalPrice: function () {
+      let tempPrice = 0
       for (const shopping of this.shoppings) {
         if (shopping.isSelect) {
-          tempPrice += parseInt(shopping.price) * parseInt(shopping.count);
+          tempPrice += parseInt(shopping.price) * parseInt(shopping.count)
         }
       }
-      this.totalPrice = tempPrice;
-      return this.totalPrice;
+      this.totalPrice = tempPrice
+      return this.totalPrice
     },
 
-    decrease: function(count) {
+    decrease: function (count) {
       if (count > 1) {
-        count = count - 1;
+        count = count - 1
       }
-      return count;
+      return count
     },
 
-    increase: function(count) {
-      if(count === ""){
-        count = 0;
+    increase: function (count) {
+      if (count === '') {
+        count = 0
       }
-      return parseInt(count) + 1;
+      return parseInt(count) + 1
     },
-    toggleSelectAll: function(isSelectAll) {
+    toggleSelectAll: function (isSelectAll) {
       if (!isSelectAll) {
         for (const shopping of this.shoppings) {
-          console.log(shopping);
-          shopping.isSelect = true;
+          console.log(shopping)
+          shopping.isSelect = true
         }
-        this.isSelectAll = true;
+        this.isSelectAll = true
       } else {
         for (const shopping of this.shoppings) {
-          console.log(shopping);
-          shopping.isSelect = false;
+          console.log(shopping)
+          shopping.isSelect = false
         }
-        this.isSelectAll = false;
+        this.isSelectAll = false
       }
     }
   },
   components: {
     Shopping
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

@@ -29,17 +29,17 @@
 
 <script>
 export default {
-  name: "Shopping",
+  name: 'Shopping',
   props: {
     shopping: {
       type: Object,
       required: true
     }
   },
-  data() {
-    return {};
+  data () {
+    return {}
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

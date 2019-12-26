@@ -8,13 +8,13 @@
 
 <script>
 export default {
-  name: "Header",
-  data() {
+  name: 'Header',
+  data () {
     return {
-      tit: "购物车"
-    };
+      tit: '购物车'
+    }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
